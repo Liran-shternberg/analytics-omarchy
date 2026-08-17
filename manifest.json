@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "analytics-omarchy",
+  "name": "Analytics",
+  "version": "0.1.0",
+  "author": "Liran",
+  "description": "CPU analytics widget for the Omarchy bar",
+  "kinds": ["bar-widget"],
+  "entryPoints": { "barWidget": "Widget.qml" },
+  "barWidget": {
+    "displayName": "Analytics",
+    "category": "System",
+    "allowMultiple": false,
+    "defaultSection": "right"
+  }
+}
