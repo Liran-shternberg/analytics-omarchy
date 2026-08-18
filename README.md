@@ -21,7 +21,7 @@ Or set `"colored": false` in the widget's entry in `~/.config/omarchy/shell.json
 ## Install
 
 ```bash
-omarchy plugin add https://github.com/<your-user>/analytics-omarchy.git --enable
+omarchy plugin add https://github.com/liran-shternberg/analytics-omarchy.git --enable
 ```
 
 Or develop locally:
