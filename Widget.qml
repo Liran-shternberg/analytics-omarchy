@@ -12,6 +12,7 @@ BarWidget {
   property real cpuPercent: 0
   property string ramUsed: ""
   property real ramPercent: 0
+  readonly property bool colored: setting("colored", true) === true
 
   // Green (idle) -> yellow -> red (max) as usage climbs.
   function heatColor(pct) {
@@ -82,7 +83,7 @@ BarWidget {
       Text {
         id: cpuText
         text: root.cpuUsage
-        color: root.heatColor(root.cpuPercent)
+        color: root.colored ? root.heatColor(root.cpuPercent) : (root.bar ? root.bar.barForeground : Color.foreground)
         font.family: root.bar ? root.bar.fontFamily : Style.font.family
         font.pixelSize: Style.font.caption
         anchors.verticalCenter: parent.verticalCenter
@@ -103,7 +104,7 @@ BarWidget {
       Text {
         id: ramText
         text: root.ramUsed
-        color: root.heatColor(root.ramPercent)
+        color: root.colored ? root.heatColor(root.ramPercent) : (root.bar ? root.bar.barForeground : Color.foreground)
         font.family: root.bar ? root.bar.fontFamily : Style.font.family
         font.pixelSize: Style.font.caption
         anchors.verticalCenter: parent.verticalCenter

@@ -6,6 +6,16 @@ Shows CPU usage (percentage) and RAM usage (used GB) side by side, each colored
 green → yellow → red as load climbs. The whole widget is one click target —
 clicking it opens [btop](https://github.com/aristocratos/btop).
 
+## Configuration
+
+Coloring is on by default. Turn it off (plain bar-text color):
+
+```bash
+omarchy bar set analytics-omarchy colored false
+```
+
+Or set `"colored": false` in the widget's entry in `~/.config/omarchy/shell.json`.
+
 ## Install
 
 ```bash
