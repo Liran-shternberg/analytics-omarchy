@@ -6,6 +6,8 @@ Shows CPU usage (percentage) and RAM usage (used GB) side by side, each colored
 green → yellow → red as load climbs. The whole widget is one click target —
 clicking it opens [btop](https://github.com/aristocratos/btop).
 
+![Preview](preview.png)
+
 ## Configuration
 
 Coloring is on by default. Turn it off (plain bar-text color):
