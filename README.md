@@ -33,6 +33,12 @@ omarchy plugin enable analytics-omarchy
 omarchy bar move analytics-omarchy --section right
 ```
 
+## Uninstall
+
+```bash
+omarchy plugin remove analytics-omarchy
+```
+
 ## Requirements
 
 - `btop` (opened on click)

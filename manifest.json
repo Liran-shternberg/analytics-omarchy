@@ -4,7 +4,7 @@
   "name": "Analytics",
   "version": "0.1.0",
   "author": "Liran",
-  "description": "CPU analytics widget for the Omarchy bar",
+  "description": "CPU and RAM analytics widget for the Omarchy bar",
   "kinds": ["bar-widget"],
   "entryPoints": { "barWidget": "Widget.qml" },
   "barWidget": {
