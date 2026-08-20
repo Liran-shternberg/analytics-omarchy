@@ -12,12 +12,18 @@ BarWidget {
   property real cpuPercent: 0
   property string ramUsed: ""
   property real ramPercent: 0
-  readonly property bool colored: setting("colored", true) === true
+  readonly property bool colored: String(setting("colored", true)) !== "false"
+  readonly property string colorMode: String(setting("colorMode", "theme")).toLowerCase()
 
-  // Green (idle) -> yellow -> red (max) as usage climbs.
-  function heatColor(pct) {
-    var t = Math.min(1, Math.max(0, pct / 100))
-    return Qt.hsla(0.33 * (1 - t), 0.72, 0.52, 1.0)
+  // Heat: green (idle) -> yellow -> red (max). Theme: bar text -> accent -> urgent.
+  function usageColor(pct) {
+    if (root.colorMode === "heat") {
+      var t = Math.min(1, Math.max(0, pct / 100))
+      return Qt.hsla(0.33 * (1 - t), 0.72, 0.52, 1.0)
+    }
+    if (pct >= 85) return Color.urgent
+    if (pct >= 60) return Color.accent
+    return root.bar ? root.bar.barForeground : Color.foreground
   }
 
   function openBtop() {
@@ -83,7 +89,7 @@ BarWidget {
       Text {
         id: cpuText
         text: root.cpuUsage
-        color: root.colored ? root.heatColor(root.cpuPercent) : (root.bar ? root.bar.barForeground : Color.foreground)
+        color: root.colored ? root.usageColor(root.cpuPercent) : (root.bar ? root.bar.barForeground : Color.foreground)
         font.family: root.bar ? root.bar.fontFamily : Style.font.family
         font.pixelSize: Style.font.caption
         anchors.verticalCenter: parent.verticalCenter
@@ -104,7 +110,7 @@ BarWidget {
       Text {
         id: ramText
         text: root.ramUsed
-        color: root.colored ? root.heatColor(root.ramPercent) : (root.bar ? root.bar.barForeground : Color.foreground)
+        color: root.colored ? root.usageColor(root.ramPercent) : (root.bar ? root.bar.barForeground : Color.foreground)
         font.family: root.bar ? root.bar.fontFamily : Style.font.family
         font.pixelSize: Style.font.caption
         anchors.verticalCenter: parent.verticalCenter
